@@ -22,14 +22,15 @@ if (!/^[0-9, q]+$/.test(input)) {
   // This is the array creation
   const arr = input.split(",").map(Number);
 
-  // Mean is caluclated here
+  // Mean is calculated here
   const mean = arr.reduce((a, b) => a + b, 0) / arr.length;
 
-  // Meadian is sorted and caluclated here 
+  // Median is sorted and calculated here 
   arr.sort((a, b) => a - b);
   const mid = Math.floor(arr.length / 2);
   const median = arr.length % 2 ? arr[mid] : (arr[mid - 1] + arr[mid]) / 2;
 
+  // Here is the output logs for the results
   console.log("Here are the results: ")
   console.log("Mean:", mean);
   console.log("Median:", median);
