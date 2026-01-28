@@ -4,26 +4,29 @@ const readline = require("readline").createInterface({
   output: process.stdout 
 }); 
 
-// This reads input (comma-separated integers)
+// This reads input (comma-separated integers), along with quitting the script when a user enters "q"
 readline.question("Enter integers separated by commas, or enter q to quit/finish: ): ", input => {
 if (input.toLowerCase() === "q") {
     console.log("Quit Confirmed");
     readline.close(); 
     return;
   } 
-  // This is the error handling section that only allows integers
+// This is the error handling section that only allows integers
 if (!/^[0-9, q]+$/.test(input)) {
   console.log("Error: Only numbers allowed, please re-enter integers.");
   readline.close();
   return;
   }
-  
-  console.log("Here are your integers: ", input);
+ 
+// Here is where the user's integers are echoed back in the output
+console.log("Here are your integers: ", input);
 
-let found = false;
-
+// Array is defined here for the entered integers
 const arr = input.split(",").map(Number);
 
+// Theses statements help determine if the product of any two of the entered integers is equal to a third integer
+// It also provides a different output result if a corresponding product is found vs. if it is not found, and displays which pairs combine to equal a third integer
+let found = false;
 for (let i = 0; i < arr.length; i++) {
   for (let j = i + 1; j < arr.length; j++) {
     for (let k = 0; k < arr.length; k++) {
