@@ -17,15 +17,18 @@ if (!/^[0-9, q]+$/.test(input)) {
   readline.close();
   return;
   }
- 
-// Here is where the user's integers are echoed back in the output
-console.log("Here are your integers: ", input);
 
 // Array is defined here for the entered integers
 const arr = input.split(",").map(Number);
 
+// This is the error handling for if the input is less than 3 integers
+if (arr.length < 3) {
+  console.log("Error: Please re-try and enter at least 3 integers.");
+  readline.close();
+  return;
+}
+
 // Theses statements help determine if the product of any two of the entered integers is equal to a third integer
-// It also provides a different output result if a corresponding product is found vs. if it is not found, and displays which pairs combine to equal a third integer
 let found = false;
 for (let i = 0; i < arr.length; i++) {
   for (let j = i + 1; j < arr.length; j++) {
@@ -36,9 +39,14 @@ for (let i = 0; i < arr.length; i++) {
       }
     }
   }
-}
+} 
+
+// It provides a different output result if a corresponding product is found vs. if it is not found, and displays which pairs combine to equal a third integer
+// Also here is where the user's integers are echoed back in the output
+
 if (found) console.log("Condition is met: ", found)
-if (!found) console.log("Condition was not met.")
+  console.log("Here are your integers: ", input);
+if (!found) console.log("Condition is met: ", false)
 
   readline.close();
 });
